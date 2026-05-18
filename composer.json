@@ -10,7 +10,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
-        "laravel/fortify": "^1.34",
+        "laravel/fortify": "^1.36",
         "laravel/framework": "^13.7",
         "laravel/tinker": "^3.0",
         "livewire/flux": "^2.13.1",
@@ -18,7 +18,7 @@
         "spatie/laravel-permission": "^7.4"
     },
     "require-dev": {
-        "fakerphp/faker": "^1.24",
+        "fakerphp/faker": "^1.23",
         "laravel/pail": "^1.2.5",
         "laravel/pao": "^1.0.6",
         "laravel/pint": "^1.27",
@@ -46,7 +46,7 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
             "@php artisan key:generate",
             "@php artisan migrate --force",
-            "pnpm install",
+            "pnpm install --ignore-scripts",
             "pnpm run build"
         ],
         "dev": [
@@ -64,7 +64,7 @@
             "@test"
         ],
         "test": [
-            "@php artisan config:clear --ansi",
+            "@php artisan config:clear --ansi @no_additional_args",
             "@lint:check",
             "@php artisan test"
         ],
@@ -85,6 +85,10 @@
         ],
         "pre-package-uninstall": [
             "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
+        ],
+        "dev-win-npm": [
+            "Composer\\Config::disableProcessTimeout",
+            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"npm run dev\"  \"mailpit --smtp=0.0.0.0:2525\" --names=server,queue,vite,mailpit"
         ]
     },
     "extra": {
