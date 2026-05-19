@@ -12,8 +12,11 @@ class StoreArticleRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check()
-            && auth()->user()->can('article-add');
+        return auth()
+            ->check()
+            && auth()
+                ->user()
+                ->can('article-add');
     }
 
     /**

@@ -21,7 +21,7 @@ class RolePermissionSeeder extends Seeder
             ['name' => 'client'],
             ['name' => 'editor'],
             ['name' => 'writer'],
-
+            ['name' => 'viewer'],
         ];
 
         $seedPermissions = [
@@ -37,11 +37,26 @@ class RolePermissionSeeder extends Seeder
             ['permission' => 'staff-only', 'roles' => ['staff']],
             ['permission' => 'admin-only', 'roles' => ['admin']],
 
-            ['permission' => 'article-view', 'roles' => ['admin', 'staff', 'editor', 'writer', 'client']],
-            ['permission' => 'article-add', 'roles' => ['admin', 'writer']],
-            ['permission' => 'article-edit', 'roles' => ['admin', 'writer', 'editor']],
-            ['permission' => 'article-publish', 'roles' => ['admin', 'editor', 'staff']],
-            ['permission' => 'article-delete', 'roles' => ['admin', 'editor', 'staff']],
+            [
+                'permission' => 'article-view',
+                'roles' => ['admin', 'staff', 'editor', 'writer', 'client', 'viewer'],
+            ],
+            [
+                'permission' => 'article-add',
+                'roles' => ['admin', 'staff', 'writer'],
+            ],
+            [
+                'permission' => 'article-edit',
+                'roles' => ['admin', 'writer', 'editor'],
+            ],
+            [
+                'permission' => 'article-publish',
+                'roles' => ['admin', 'staff', 'editor'],
+            ],
+            [
+                'permission' => 'article-delete',
+                'roles' => ['admin', 'staff'],
+            ],
 
         ];
 

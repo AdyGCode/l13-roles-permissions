@@ -12,8 +12,11 @@ class UpdateArticleRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check()
-            && auth()->user()->can('article-edit');
+        return auth()
+            ->check()
+            && auth()
+                ->user()
+                ->can('article-edit');
     }
 
     /**

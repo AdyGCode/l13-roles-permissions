@@ -59,7 +59,8 @@ test('users with two factor enabled are redirected to two factor challenge', fun
 test('users can logout', function () {
     $user = User::factory()->create();
 
-    $response = $this->actingAs($user)->post(route('logout'));
+    $response = $this->actingAs($user)
+        ->post(route('logout'));
 
     $response->assertRedirect(route('home'));
 
