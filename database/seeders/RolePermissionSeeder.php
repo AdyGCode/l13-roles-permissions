@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -20,6 +19,9 @@ class RolePermissionSeeder extends Seeder
             ['name' => 'admin'],
             ['name' => 'staff'],
             ['name' => 'client'],
+            ['name' => 'editor'],
+            ['name' => 'writer'],
+
         ];
 
         $seedPermissions = [
@@ -34,15 +36,20 @@ class RolePermissionSeeder extends Seeder
             ['permission' => 'client-only', 'roles' => ['client']],
             ['permission' => 'staff-only', 'roles' => ['staff']],
             ['permission' => 'admin-only', 'roles' => ['admin']],
+
+            ['permission' => 'articles-view', 'roles' => ['admin', 'staff', 'editor', 'writer', 'client']],
+            ['permission' => 'articles-add', 'roles' => ['admin', 'writer']],
+            ['permission' => 'articles-edit', 'roles' => ['admin', 'writer', 'editor']],
+            ['permission' => 'articles-publish', 'roles' => ['admin', 'editor', 'staff']],
+
         ];
 
-        foreach ($seedRoles as $role) {
-            $role = Role::create($role);
+        foreach ($seedRoles as $newRole) {
+            $role = Role::findOrCreate($newRole['name']);
         }
 
         foreach ($seedPermissions as $seedPermission) {
-            $newPermission = ['name' => $seedPermission['permission']];
-            $permission = Permission::create($newPermission);
+            $permission = Permission::findOrCreate($seedPermission['permission']);
             $permission->syncRoles($seedPermission['roles']);
         }
     }
