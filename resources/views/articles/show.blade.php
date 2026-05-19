@@ -8,7 +8,7 @@
             </div>
             <div class="flex space-x-3">
                 <a href="{{ route('articles.index') }}" class="text-sm font-medium text-gray-600 hover:text-gray-900 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-md transition shadow-sm border border-gray-200">Back</a>
-                @can('edit articles')
+                @can('article-edit')
                     <a href="{{ route('articles.edit', $article) }}" class="text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-md shadow-sm transition">Edit</a>
                 @endcan
             </div>

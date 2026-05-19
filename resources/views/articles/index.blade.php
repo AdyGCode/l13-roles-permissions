@@ -4,7 +4,7 @@
     <div class="flex justify-between items-center mb-6">
         <h1 class="text-3xl font-bold text-gray-900">Articles</h1>
         <div class="flex items-center space-x-4">
-            @can('create articles')
+            @can('article-add')
                 <a href="{{ route('articles.create') }}" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition duration-200 shadow-sm">
                     Create Article
                 </a>
@@ -46,10 +46,10 @@
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium space-x-2">
                         <a href="{{ route('articles.show', $article) }}" class="inline-flex items-center px-3 py-1.5 bg-blue-600 rounded-md text-xs text-white uppercase hover:bg-blue-700 transition shadow-sm">View</a>
-                        @can('edit articles')
+                        @can('article-edit')
                             <a href="{{ route('articles.edit', $article) }}" class="inline-flex items-center px-3 py-1.5 bg-amber-500 rounded-md text-xs text-white uppercase hover:bg-amber-600 transition shadow-sm">Edit</a>
                         @endcan
-                        @can('delete articles')
+                        @can('article-delete')
                             <form action="{{ route('articles.destroy', $article) }}" method="POST" class="inline-block m-0">
                                 @csrf
                                 @method('DELETE')
