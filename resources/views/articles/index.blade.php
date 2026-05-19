@@ -1,4 +1,4 @@
-<x-layouts::app :title="__('Dashboard')">
+<x-layouts::app :title="__('Articles')">
 
 <div class="max-w-7xl mx-auto bg-white p-6 md:p-8 rounded-lg shadow-md">
     <div class="flex justify-between items-center mb-6">

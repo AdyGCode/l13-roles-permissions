@@ -12,7 +12,8 @@ class StoreArticleRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return auth()->check()
+            && auth()->user()->can('article-add');
     }
 
     /**
@@ -23,7 +24,9 @@ class StoreArticleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => ['required', 'string', 'max:255'],
+            'content' => ['nullable', 'string'],
+            'status' => ['required', 'in:published,draft'],
         ];
     }
 }

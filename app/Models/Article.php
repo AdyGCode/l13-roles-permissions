@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-#[Fillable(['title','content','status','user_id'])]
+#[Fillable(['title', 'content', 'status', 'user_id'])]
 class Article extends Model
 {
     /** @use HasFactory<ArticleFactory> */

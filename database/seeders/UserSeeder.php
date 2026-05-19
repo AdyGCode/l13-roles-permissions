@@ -52,7 +52,7 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('Password1'),
                 'permissions' => [],
                 'roles' => ['writer'],
-            ]
+            ],
         ];
 
         foreach ($seedUsers as $seedUser) {

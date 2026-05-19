@@ -18,7 +18,8 @@ class ArticleController extends Controller
     {
         //
         $articles = Article::with('user')->latest()->paginate(10);
-//        return view('articles.index', compact('articles'));
+
+        //        return view('articles.index', compact('articles'));
         return view('articles.index')
             ->with('articles', $articles);
     }
@@ -40,6 +41,7 @@ class ArticleController extends Controller
     {
         $validated = $request->validated();
         $article = Article::create($validated);
+
         return redirect()->route('articles.index')
             ->with('success', 'Article created successfully.');
     }
@@ -84,6 +86,7 @@ class ArticleController extends Controller
     {
         // BEWARE NO CONFIRM THE DELETE
         $article->delete();
+
         return redirect()->route('articles.index')
             ->with('success', 'Article deleted successfully.');
     }
