@@ -37,10 +37,11 @@ class RolePermissionSeeder extends Seeder
             ['permission' => 'staff-only', 'roles' => ['staff']],
             ['permission' => 'admin-only', 'roles' => ['admin']],
 
-            ['permission' => 'articles-view', 'roles' => ['admin', 'staff', 'editor', 'writer', 'client']],
-            ['permission' => 'articles-add', 'roles' => ['admin', 'writer']],
-            ['permission' => 'articles-edit', 'roles' => ['admin', 'writer', 'editor']],
-            ['permission' => 'articles-publish', 'roles' => ['admin', 'editor', 'staff']],
+            ['permission' => 'article-view', 'roles' => ['admin', 'staff', 'editor', 'writer', 'client']],
+            ['permission' => 'article-add', 'roles' => ['admin', 'writer']],
+            ['permission' => 'article-edit', 'roles' => ['admin', 'writer', 'editor']],
+            ['permission' => 'article-publish', 'roles' => ['admin', 'editor', 'staff']],
+            ['permission' => 'article-delete', 'roles' => ['admin', 'editor', 'staff']],
 
         ];
 
